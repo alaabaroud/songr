@@ -5,15 +5,17 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="album.css" />
+
     <title>Document</title>
 </head>
 <body>
 
-<h1> the Best Albums</h1>
+<h1> The Best Albums</h1>
 <main>
 
 
-<div th:each=" album : ${albumzz}" >
+<div th:each=" AlbumModel : ${albumzz}"  class="album">
     <p> Title : <span th:text ="${AlbumModel.title}"></span></p>
     <p> Artist  : <span th:text ="${AlbumModel.artist }"></span></p>
     <p> Number OF Song : <span th:text ="${AlbumModel.songCount}"></span></p>
