@@ -12,9 +12,8 @@ public class homeController {
     @RequestMapping(value = "/test", method = RequestMethod.GET)
 
 //    @ResponseBody
-//    @GetMapping
+    @GetMapping("/")
     public String test() {
-//        return  "testing";
         return "home";
     }
  //  localhost:8080/homeController/getMapping
