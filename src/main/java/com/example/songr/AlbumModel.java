@@ -1,13 +1,20 @@
 package com.example.songr;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
 public class AlbumModel {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String title;
     private String artist;
     private int songCount;
     private int length;
     private String imageUrl;
-
+    private int id;
     public AlbumModel(String title, String artist, int songCount, int length, String imageUrl) {
+
         this.title = title;
         this.artist = artist;
         this.songCount = songCount;
@@ -15,6 +22,15 @@ public class AlbumModel {
         this.imageUrl = imageUrl;
     }
 
+    @OneToMany(mappedBy = "albums")
+    private List<SongModel> songModel;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getTitle() {
         return title;
     }
@@ -51,7 +67,12 @@ public class AlbumModel {
         return imageUrl;
     }
 
+
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+    public AlbumModel(){
+
+    }
+
 }

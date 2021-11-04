@@ -1,23 +1,40 @@
 package com.example.songr;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class SongModel {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 private int id;
     private String title;
     private double length;
     private int trackNumber;
 
 
+    public SongModel(String title, double length, int trackNumber, AlbumModel testAlbum){
 
-    public SongModel(int id, String title, double length, int trackNumber) {
-        this.id = id;
+    }
+
+    public AlbumModel getAlbumModel() {
+        return albums;
+    }
+
+    public void setAlbums(AlbumModel albums) {
+        this.albums = albums;
+    }
+    public SongModel() {
+
+    }
+
+    @ManyToOne
+    private AlbumModel albums;
+
+
+
+
+    public SongModel(String title, double length, int trackNumber) {
         this.title = title;
         this.length = length;
         this.trackNumber = trackNumber;
