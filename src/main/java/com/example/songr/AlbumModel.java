@@ -7,23 +7,30 @@ import java.util.List;
 public class AlbumModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String title;
     private String artist;
     private int songCount;
     private int length;
-    private String imageUrl;
-    private int id;
-    public AlbumModel(String title, String artist, int songCount, int length, String imageUrl) {
+    private String imgUrl;
 
+    @OneToMany(mappedBy ="album")
+    private List<SongModel> songs;
+
+
+
+    public AlbumModel(){
+
+    }
+
+    public AlbumModel(String title, String artist, int songCount, int length, String imgUrl) {
         this.title = title;
         this.artist = artist;
         this.songCount = songCount;
         this.length = length;
-        this.imageUrl = imageUrl;
+        this.imgUrl = imgUrl;
     }
 
-    @OneToMany(mappedBy = "albums")
-    private List<SongModel> songModel;
     public int getId() {
         return id;
     }
@@ -31,6 +38,7 @@ public class AlbumModel {
     public void setId(int id) {
         this.id = id;
     }
+
     public String getTitle() {
         return title;
     }
@@ -63,16 +71,20 @@ public class AlbumModel {
         this.length = length;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public List<SongModel> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(List<SongModel> songs) {
+        this.songs = songs;
     }
 
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-    public AlbumModel(){
-
+    public String getImgUrl() {
+        return imgUrl;
     }
 
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
 }

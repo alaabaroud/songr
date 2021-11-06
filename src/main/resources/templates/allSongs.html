@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main>
+        <tr>
+            <th>Song title</th>
+            <th>Song length</th>
+            <th>track Number in album</th>
+        </tr>
+        <tr th:each="song : ${songs}">
+            <td th:text="${song.title}"></td>
+            <td th:text="${song.length}"></td>
+            <td th:text="${song.trackNumber}"></td>
+        </tr>
+</main>
+</body>
+</html>

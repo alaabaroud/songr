@@ -7,39 +7,23 @@ import javax.persistence.*;
 public class SongModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-private int id;
+    private int id;
     private String title;
-    private double length;
+    private int length;
     private int trackNumber;
+    @ManyToOne()
+    private AlbumModel album;
 
-
-    public SongModel(String title, double length, int trackNumber, AlbumModel testAlbum){
-
-    }
-
-    public AlbumModel getAlbumModel() {
-        return albums;
-    }
-
-    public void setAlbums(AlbumModel albums) {
-        this.albums = albums;
-    }
-    public SongModel() {
-
-    }
-
-    @ManyToOne
-    private AlbumModel albums;
-
-
-
-
-    public SongModel(String title, double length, int trackNumber) {
+    public SongModel(String title, int length, int trackNumber) {
         this.title = title;
         this.length = length;
         this.trackNumber = trackNumber;
+
     }
 
+    public SongModel(){
+
+    }
 
 
     public int getId() {
@@ -58,11 +42,11 @@ private int id;
         this.title = title;
     }
 
-    public double getLength() {
+    public int getLength() {
         return length;
     }
 
-    public void setLength(double length) {
+    public void setLength(int length) {
         this.length = length;
     }
 
@@ -72,5 +56,13 @@ private int id;
 
     public void setTrackNumber(int trackNumber) {
         this.trackNumber = trackNumber;
+    }
+
+    public AlbumModel getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(AlbumModel album) {
+        this.album = album;
     }
 }
